@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+
+- Keep all application routes on TanStack Start. Use Lovable Cloud Auth and Postgres with organization-scoped membership policies for persistent business data, because this project is not a Next.js application and supply-chain records must remain tenant-isolated.
+- Store roles in the protected user_roles table and authorize organization data through database row policies; user-editable profile fields must never confer privileges.

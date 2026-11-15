@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794748494829,
+      "tag": "0000_pharmtrace_core_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794748634705,
+      "tag": "0001_pharmtrace_demo_batch",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794748667143,
+      "tag": "0002_pharmtrace_event_actor_and_order_status",
+      "breakpoints": true
+    }
+  ]
+}
