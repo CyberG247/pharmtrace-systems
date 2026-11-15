@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardAdminRouteImport } from './routes/dashboard.admin'
+import { Route as DashboardManufacturerRouteImport } from './routes/dashboard.manufacturer'
+import { Route as DashboardPharmacyRouteImport } from './routes/dashboard.pharmacy'
+import { Route as DashboardRegulatorRouteImport } from './routes/dashboard.regulator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardAdminRoute = DashboardAdminRouteImport.update({
+  id: '/dashboard/admin',
+  path: '/dashboard/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardManufacturerRoute = DashboardManufacturerRouteImport.update({
+  id: '/dashboard/manufacturer',
+  path: '/dashboard/manufacturer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardPharmacyRoute = DashboardPharmacyRouteImport.update({
+  id: '/dashboard/pharmacy',
+  path: '/dashboard/pharmacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRegulatorRoute = DashboardRegulatorRouteImport.update({
+  id: '/dashboard/regulator',
+  path: '/dashboard/regulator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/manufacturer': typeof DashboardManufacturerRoute
+  '/dashboard/pharmacy': typeof DashboardPharmacyRoute
+  '/dashboard/regulator': typeof DashboardRegulatorRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/manufacturer': typeof DashboardManufacturerRoute
+  '/dashboard/pharmacy': typeof DashboardPharmacyRoute
+  '/dashboard/regulator': typeof DashboardRegulatorRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/manufacturer': typeof DashboardManufacturerRoute
+  '/dashboard/pharmacy': typeof DashboardPharmacyRoute
+  '/dashboard/regulator': typeof DashboardRegulatorRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard/admin'
+    | '/dashboard/manufacturer'
+    | '/dashboard/pharmacy'
+    | '/dashboard/regulator'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dashboard/admin'
+    | '/dashboard/manufacturer'
+    | '/dashboard/pharmacy'
+    | '/dashboard/regulator'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard/admin'
+    | '/dashboard/manufacturer'
+    | '/dashboard/pharmacy'
+    | '/dashboard/regulator'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardAdminRoute: typeof DashboardAdminRoute
+  DashboardManufacturerRoute: typeof DashboardManufacturerRoute
+  DashboardPharmacyRoute: typeof DashboardPharmacyRoute
+  DashboardRegulatorRoute: typeof DashboardRegulatorRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/admin': {
+      id: '/dashboard/admin'
+      path: '/dashboard/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof DashboardAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/manufacturer': {
+      id: '/dashboard/manufacturer'
+      path: '/dashboard/manufacturer'
+      fullPath: '/dashboard/manufacturer'
+      preLoaderRoute: typeof DashboardManufacturerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/pharmacy': {
+      id: '/dashboard/pharmacy'
+      path: '/dashboard/pharmacy'
+      fullPath: '/dashboard/pharmacy'
+      preLoaderRoute: typeof DashboardPharmacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/regulator': {
+      id: '/dashboard/regulator'
+      path: '/dashboard/regulator'
+      fullPath: '/dashboard/regulator'
+      preLoaderRoute: typeof DashboardRegulatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardAdminRoute: DashboardAdminRoute,
+  DashboardManufacturerRoute: DashboardManufacturerRoute,
+  DashboardPharmacyRoute: DashboardPharmacyRoute,
+  DashboardRegulatorRoute: DashboardRegulatorRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

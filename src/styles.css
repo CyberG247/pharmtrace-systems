@@ -144,8 +144,9 @@
 }
 
 @theme inline {
-  --font-sans: "DM Sans", sans-serif;
-  --font-display: "Manrope", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
 }
 
 @layer base {
@@ -157,6 +158,8 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -169,11 +172,59 @@
   background-size: 32px 32px;
 }
 
+/* Pharmaceutical molecular lattice and pill grid patterns */
+@utility bg-pharma-mesh {
+  background-image: radial-gradient(circle at center, rgba(4, 78, 59, 0.08) 1.5px, transparent 1.5px), radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px, 12px 12px;
+  background-position: 0 0, 12px 12px;
+}
+
+@utility bg-molecular-dark {
+  background-image: radial-gradient(circle at center, rgba(52, 211, 153, 0.15) 1.5px, transparent 1.5px), radial-gradient(circle at center, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px, 14px 14px;
+}
+
+@utility touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
 @keyframes signal-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.45; }
 }
 
+@keyframes laser-sweep {
+  0% { top: 6%; opacity: 0.4; }
+  50% { top: 90%; opacity: 1; }
+  100% { top: 6%; opacity: 0.4; }
+}
+
+@keyframes alert-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+  }
+}
+
 @utility animate-signal {
   animation: signal-pulse 1.6s ease-in-out infinite;
+}
+
+@utility animate-laser {
+  animation: laser-sweep 2s ease-in-out infinite;
+}
+
+@utility animate-alert-beacon {
+  animation: alert-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@utility card-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+  }
 }
